@@ -69,7 +69,7 @@ public class UploadAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-
+        String s=getSavepath();
         FileOutputStream fos = new FileOutputStream(getSavepath() + "\\" + getUploadFileName());
         FileInputStream fis = new FileInputStream(getUpload());
         byte[] buffer=new byte[1024];
@@ -90,10 +90,10 @@ public class UploadAction extends ActionSupport {
         return ERROR;
     }
 
-    public void validate(){
-        String filterResult=filterType(getAllowTypes().split(","));
-        if (filterResult != null) {
-            addFieldError("upload","您要上传的文件类型不正确！");
-        }
-    }
+//    public void validate(){
+//        String filterResult=filterType(getAllowTypes().split(","));
+//        if (filterResult != null) {
+//            addFieldError("upload","您要上传的文件类型不正确！");
+//        }
+//    }
 }

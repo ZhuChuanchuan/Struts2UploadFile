@@ -12,7 +12,7 @@
     <title>简单的文件上传</title>
   </head>
   <body>
-    <s:form action="upload" enctype="multipart/form-data">
+    <s:form action="upload" enctype="multipart/form-data" method="POST">
         <s:textfield name="title" label="文件标题"/>
         <s:file name="upload" label="选择文件"/>
         <s:submit value="上传"/>

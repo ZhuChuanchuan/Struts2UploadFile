@@ -8,8 +8,16 @@
 
     <package name="zhcc" extends="struts-default">
         <action name="upload" class="com.zhcc.action.UploadAction">
+            <!--动态设置Action属性值-->
             <param name="savepath">/uploadFiles</param>
-            <param name="allowTypes">image/jpg,image/gif,image/png</param>
+
+            <!--配置fileUpload拦截器-->
+            <interceptor-ref name="fileUpload">
+                <param name="allowedTypes">image/png,image/gif,image/jpeg,image/jpg</param>
+                <param name="maximumSize">200000000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+
             <result name="input">/index.jsp</result>
             <result>/succ.jsp</result>
         </action>

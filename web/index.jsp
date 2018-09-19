@@ -17,5 +17,6 @@
         <s:file name="upload" label="选择文件"/>
         <s:submit value="上传"/>
     </s:form>
+  <s:fielderror/>
   </body>
 </html>

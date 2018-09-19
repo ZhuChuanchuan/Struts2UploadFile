@@ -17,6 +17,16 @@ public class UploadAction extends ActionSupport {
     private String uploadFileName;
     private String savepath;
 
+    private String allowTypes;
+
+    public String getAllowTypes() {
+        return allowTypes;
+    }
+
+    public void setAllowTypes(String allowTypes) {
+        this.allowTypes = allowTypes;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -68,5 +78,22 @@ public class UploadAction extends ActionSupport {
             fos.write(buffer,0,len);
         }
         return SUCCESS;
+    }
+
+    public String filterType(String[] types) {
+        String fileType=getUploadContentType();
+        for (String type : types) {
+            if (type.equals(fileType)) {
+                return null;
+            }
+        }
+        return ERROR;
+    }
+
+    public void validate(){
+        String filterResult=filterType(getAllowTypes().split(","));
+        if (filterResult != null) {
+            addFieldError("upload","您要上传的文件类型不正确！");
+        }
     }
 }
